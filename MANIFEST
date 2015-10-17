@@ -21,6 +21,7 @@ t/both.t
 t/generator.t
 t/parser.t
 t/pod.t
+t/rt90125.t
 typemap
 yajl/.gitignore
 yajl/BUILDING
