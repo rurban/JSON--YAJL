@@ -128,7 +128,7 @@ static int callback_string(void * hashref, const unsigned char * s, size_t l) {
     ENTER;
     SAVETMPS;
     PUSHMARK(SP);
-    XPUSHs(sv_2mortal(newSVpv((char *)s, l)));
+    XPUSHs(sv_2mortal(newSVpvn((char *)s, l)));
     PUTBACK;
     callback_call((SV*) hashref, 5);
     return 1;

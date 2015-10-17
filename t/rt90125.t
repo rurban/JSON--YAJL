@@ -26,7 +26,7 @@ while (<DATA>) {
 }
 $parser->parse_complete();
 
-local $TODO = "RT# 90125";
+# local $TODO = "RT# 90125"; # fixed with newSVpvn
 is($text, qq( map_open map_key: foo string: "" map_key: bar string: "baz" map_close),
    "empty strings");
 done_testing();
