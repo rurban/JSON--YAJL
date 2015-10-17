@@ -9,14 +9,14 @@ use Test::More;
 my $generator_default = JSON::YAJL::Generator->new();
 isa_ok( $generator_default, 'JSON::YAJL::Generator' );
 is( create($generator_default),
-    '{"integer":123,"double":4,"number":3.141,"string":"a string","string2":"another string","null":null,"true":true,"false":false,"map":{"key":"value","array":[1,2,3]}}'
+    '{"integer":123,"double":4.0,"number":3.141,"string":"a string","string2":"another string","null":null,"true":true,"false":false,"map":{"key":"value","array":[1,2,3]}}'
 );
 
 my $generator_pretty = JSON::YAJL::Generator->new( 1, '   ' );
 isa_ok( $generator_pretty, 'JSON::YAJL::Generator' );
 is( create($generator_pretty), '{
    "integer": 123,
-   "double": 4,
+   "double": 4.0,
    "number": 3.141,
    "string": "a string",
    "string2": "another string",

@@ -1,11 +1,13 @@
 #!perl
+
 use strict;
 use warnings;
 use Module::Build;
 
 my $build = Module::Build->new(
     build_requires => { 'ExtUtils::CBuilder' => 0 },
-    c_source       => 'yajl',
+    c_source       => 'yajl/src',
+    include_dirs   => [ 'yajl/src/api' ],
     create_license => 1,
     create_readme  => 1,
     dist_abstract =>
@@ -14,15 +16,17 @@ my $build = Module::Build->new(
     license     => 'perl',
     meta_merge  => {
         resources => {
-            bugtracker => {
-                mailto => 'bug-JSON-YAJL@rt.cpan.org',
-                web => 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=JSON-YAJL',
-            },
+#            bugtracker => {
+#                mailto => 'bug-JSON-YAJL@rt.cpan.org',
+#                web => 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=JSON-YAJL',
+#            },
             homepage   => 'http://search.cpan.org/dist/JSON-YAJL/',
             repository => {
                 type => 'git',
                 web  => 'git@github.com:acme/JSON--YAJL.git',
                 url  => 'https://github.com/acme/JSON--YAJL',
+                # Note: git submodule update --init
+                # url  => 'https://github.com/rurban/JSON--YAJL',
             },
         },
     },
