@@ -211,7 +211,7 @@ CODE:
     yajl_handle parser;
     AV* array;
     HV *hash = newHV();
-    (void)hv_stores(hash, "data", newSVpv("", 0));
+    (void)hv_stores(hash, "data", SvREFCNT_inc(newSVpvn("", 0)));
     SvREFCNT_inc_void(arrayref);
     if (!SvROK(arrayref)) {
         printf("type is %i\n", SvTYPE(arrayref));
@@ -226,7 +226,7 @@ CODE:
     } else {
         DEBUG && printf("array is an PVAV\n");
     }
-    (void)hv_stores(hash, "array", arrayref);
+    (void)hv_stores(hash, "array", SvREFCNT_inc(arrayref));
     SV *hashref = newRV_noinc((SV*)hash);
     parser = yajl_alloc(&callbacks, NULL, (void *) hashref);
     yajl_config(parser, yajl_allow_comments, allowComments);
@@ -254,7 +254,7 @@ CODE:
     } else {
         hashref = (SV*) parser->ctx;
         hash = (HV*) SvRV(hashref);
-        (void)hv_stores(hash, "data", data);
+        (void)hv_stores(hash, "data", SvREFCNT_inc(data));
     }
 
 void parse_complete(JSON::YAJL::Parser parser)
