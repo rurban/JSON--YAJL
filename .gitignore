@@ -7,3 +7,5 @@ JSON-YAJL-*
 lib/JSON/YAJL/Generator.c
 lib/JSON/YAJL/Parser.c
 MANIFEST.bak
+MYMETA.json
+MYMETA.yml
